@@ -1,0 +1,16 @@
+<div style="width: 100%; padding: 20px;">
+    <div style="display: flex; flex-direction: row; justify-content: center;">
+      <div style="width: 50%; margin: 0 auto; padding: 20px;">
+        <div style="background-color: #fff; border: 1px solid #ddd; padding: 20px; border-radius: 10px; box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);">
+          <div style="padding: 20px;">
+            <h2 style="font-weight: bold; color: #333; margin-top: 0;">Convert Image to PDF</h2>
+            <form method="post" enctype="multipart/form-data">
+              {% csrf_token %}
+              {{ form.as_p }}
+              <button type="submit" style="background-color: #007bff; color: #fff; padding: 10px 20px; border: none; border-radius: 5px; cursor: pointer;">Convert to PDF</button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
