@@ -20,5 +20,8 @@ from converter import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('convert/', views.convert_image_to_pdf, name='convert_image_to_pdf'),
+    path('', views.base, name='convert_image_to_pdf'),
+    path('convert-single/', views.convert_single_image_to_pdf, name='convert_single'),
+    path('convert-multiple/', views.convert_multiple_images_to_pdf, name='convert_multiple'),
 ]
+

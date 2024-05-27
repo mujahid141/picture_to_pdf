@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" />
+    <title>Image to PDF Converter</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            max-width: 800px;
+            margin: 40px auto;
+            padding: 20px;
+            background-color: #f9f9f9;
+            border: 1px solid #ddd;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            display: flex;
+            border-radius: 15px;
+            flex-direction: column;
+            align-items: center;
+        }
+        .header {
+            background-color: #333;
+            color: #fff;
+            padding: 10px;
+            text-align: center;
+            border-radius: 10px;
+        }
+        .header h1 {
+            margin: 0;
+        }
+        .form-group {
+            margin-bottom: 20px;
+        }
+        .form-group label {
+            display: block;
+            margin-bottom: 10px;
+        }
+        .form-group input[type="file"] {
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            width: 100%;
+        }
+        .form-group button[type="submit"] {
+            background-color: #333;
+            color: #fff;
+            padding: 10px 20px;
+            margin: 7px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .form-group button[type="submit"]:hover {
+            background-color: #444;
+        }
+        .icon {
+            font-size: 24px;
+            margin-right: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>Image to PDF Converter</h1>
+        </div>
+        <form method="post" enctype="multipart/form-data" action="{% url 'convert_single' %}">
+            {% csrf_token %}
+            <div class="form-group">
+                <h2><i class="icon fa fa-file-image"></i> Convert Single Image to PDF</h2>
+                <label for="single_image">Select Image:</label>
+                <input type="file" name="single_image" accept="image/*" id="single_image" required>
+                <button type="submit" name="convert_single">Convert to PDF <i class="icon fa fa-file-pdf"></i></button>
+            </div>
+        </form>
+        <hr>
+        <form method="post" enctype="multipart/form-data" action="{% url 'convert_multiple' %}">
+            {% csrf_token %}
+            <div class="form-group">
+                <h2><i class="icon fa fa-file"></i> Convert Multiple Images to PDF</h2>
+                <label for="multiple_images">Select Images:</label>
+                <input type="file" name="multiple_images" accept="image/*" multiple id="multiple_images" required>
+                <button type="submit" name="convert_multiple">Convert to PDF <i class="icon fa fa-file-pdf"></i></button>
+            </div>
+        </form>
+        
+                
+            </form>
+    </div>
+</body>
+</html>
